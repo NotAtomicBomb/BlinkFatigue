@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using UnityEngine;
 
 namespace BlinkFatigue
@@ -17,7 +17,7 @@ namespace BlinkFatigue
 			}
 			if (!BlinkCustomMethod.someoneLooking)
 			{
-				BlinkCustomMethod.reworkSubstractTime -= Time.fixedDeltaTime * BlinkConfigs.decreaseRate;
+				BlinkCustomMethod.reworkSubstractTime -= Time.fixedDeltaTime * BlinkFatigue.decreaseRate;
 				if (BlinkCustomMethod.reworkSubstractTime < 0f)
 				{
 					BlinkCustomMethod.reworkSubstractTime = 0f;

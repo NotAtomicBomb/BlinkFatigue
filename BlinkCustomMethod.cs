@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Exiled.API.Features;
+using UnityEngine;
 
 namespace BlinkFatigue
 {
@@ -22,25 +23,25 @@ namespace BlinkFatigue
 			{
 				return;
 			}
-
+			
 			Scp173PlayerScript._blinkTimeRemaining = scpScript.blinkDuration_see + 0.4f;
-			Scp173PlayerScript._remainingTime = Mathf.Max(BlinkConfigs.minReworkBlinkTime, Random.Range(BlinkConfigs.minBlinkTime, BlinkConfigs.maxBlinkTime) - reworkSubstractTime);
+			Scp173PlayerScript._remainingTime = Mathf.Max(BlinkFatigue.minReworkBlinkTime, Random.Range(BlinkFatigue.minBlinkTime, BlinkFatigue.maxBlinkTime) - reworkSubstractTime);
 
 			if (someoneLooking)
 			{
-				float val = Random.Range(BlinkConfigs.reworkAddMin, BlinkConfigs.reworkAddMax);
-				EXILED.Plugin.Debug($"Adding {val} to {reworkSubstractTime}");
+				float val = Random.Range(BlinkFatigue.reworkAddMin, BlinkFatigue.reworkAddMax);
+				Log.Debug($"Adding {val} to {reworkSubstractTime}");
 				reworkSubstractTime += val;
 				// If SCP-173 is sick of your shit, this basically negates an infinite stacking of the blink fatigue ability
-				if (reworkSubstractTime > BlinkConfigs.minBlinkTime)
+				if (reworkSubstractTime > BlinkFatigue.minBlinkTime)
 				{
-					reworkSubstractTime = BlinkConfigs.minBlinkTime;
+					reworkSubstractTime = BlinkFatigue.minBlinkTime;
 				}
 			}
 			else
 			{
-				float val = Random.Range(BlinkConfigs.reworkAddMin, BlinkConfigs.reworkAddMax) * BlinkConfigs.decreaseRate;
-				EXILED.Plugin.Debug($"Substracting {val} to {reworkSubstractTime}");
+				float val = Random.Range(BlinkFatigue.reworkAddMin, BlinkFatigue.reworkAddMax) * BlinkFatigue.decreaseRate;
+				Log.Debug($"Substracting {val} to {reworkSubstractTime}");
 				reworkSubstractTime -= val;
 				if (reworkSubstractTime < 0f)
 				{

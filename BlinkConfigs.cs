@@ -1,22 +1,19 @@
-﻿namespace BlinkFatigue
-{
-    public static class BlinkConfigs
-    {
-        internal static float decreaseRate;
-        internal static float maxBlinkTime;
-        internal static float minBlinkTime;
-        internal static float minReworkBlinkTime;
-        internal static float reworkAddMin;
-        internal static float reworkAddMax;
+﻿using Exiled.API.Interfaces;
 
-        internal static void ReloadConfigs()
-        {
-            decreaseRate = EXILED.Plugin.Config.GetFloat("blink_decreaserate", 0.75f);
-      minReworkBlinkTime = EXILED.Plugin.Config.GetFloat("blink_minblinktime", 1.5f);
-            minBlinkTime = EXILED.Plugin.Config.GetFloat("blink_mintime", 2.5f);
-            maxBlinkTime = EXILED.Plugin.Config.GetFloat("blink_maxtime", 3.5f);
-            reworkAddMin = EXILED.Plugin.Config.GetFloat("blink_addmin", 0.35f);
-            reworkAddMax = EXILED.Plugin.Config.GetFloat("blink_addmax", 0.45f);
-        }
+namespace BlinkFatigue
+{
+    public sealed class Config : IConfig
+    {
+        public bool IsEnabled { get; set; } = true;
+        public float decreaseRate { get; set; } = 0.75f;
+        public float maxBlinkTime { get; set; } = 3.5f;
+        public float minBlinkTime { get; set; } = 2.5f;
+        public float minReworkBlinkTime { get; set; } = 1.5f;
+        public float reworkAddMin { get; set; } = 0.35f;
+        public float reworkAddMax { get; set; } = 0.45f;
+
+        
+
+        
     }
 }
